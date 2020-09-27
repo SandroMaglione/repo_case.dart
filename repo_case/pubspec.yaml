@@ -1,0 +1,14 @@
+name: repo_case
+description: RepoCase allows you to auto-generate use cases classes from your repository signature class.
+version: 0.1.0
+author: Sandro Maglione <lass.maglio@gmail.com>
+homepage: https://github.com/SandroMaglione/repo_case.dart
+
+environment:
+  sdk: ">=2.6.0 <3.0.0"
+
+dependencies:
+  test: ^1.11.1
+
+dependency_overrides:
+  analyzer: '0.39.14'
