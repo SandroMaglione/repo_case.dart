@@ -3,12 +3,11 @@ import 'package:repo_case/repo_case.dart';
 part 'example.g.dart';
 
 @RepoCase()
-class UserRepository {
-  final String play;
-  final int nummm;
+abstract class UserRepository {
+  Future<bool> postFeedback(int idWorkoutExecution, String workoutFeedback);
 
-  const UserRepository(this.play, this.nummm);
+  Future<bool> postWellness(int wellnessFeedback);
+  Future<bool> postWellnessNumber2(int wellnessFeedback);
 
-  void open() {}
-  void ending() {}
+  // Future<List<String>> getWellnessHistory();
 }

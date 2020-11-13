@@ -14,6 +14,8 @@ class RepoCaseGenerator extends GeneratorForAnnotation<RepoCase> {
   @override
   FutureOr<String> generateForAnnotatedElement(
       Element element, ConstantReader annotation, BuildStep buildStep) {
+    // print(annotation.read('isFuture').boolValue);
+
     return _generate(element);
   }
 
@@ -23,22 +25,61 @@ class RepoCaseGenerator extends GeneratorForAnnotation<RepoCase> {
     element.visitChildren(modelVisitor);
 
     for (var met in modelVisitor.methods.keys) {
-      final dartType = modelVisitor.methods[met];
+      final currMethod = modelVisitor.methods[met];
+      final dartType = currMethod.left;
       final className = '${useCaseClassGenerator.capitalizeAndLower(met)}Repo';
-      final repoType = modelVisitor.className.toString();
-      final repoName =
-          useCaseClassGenerator.firstToLower(modelVisitor.className.toString());
+      final repoType = modelVisitor.classNameString;
+      final repoName = useCaseClassGenerator.firstToLower(repoType);
 
-      useCaseClassGenerator.writeln(
-          "class $className extends UseCase<${dartType},${className}Params> {");
+      // Usecase class
+      useCaseClassGenerator.writeln("class $className {");
+      // useCaseClassGenerator.writeln(
+      //     "class $className extends UseCase<${dartType},${className}Params> {");
       useCaseClassGenerator.writeln("final $repoType $repoName;");
       useCaseClassGenerator.newLine;
       useCaseClassGenerator.writeln("const $className({");
       useCaseClassGenerator.writeln("@required this.$repoName,");
       useCaseClassGenerator.writeln("});");
       useCaseClassGenerator.newLine;
+      useCaseClassGenerator.writeln("@override");
+      useCaseClassGenerator.writeln(
+          "Future<Either<Failure, bool>> call(${className}Params params) async {");
+      useCaseClassGenerator.writeln(
+          "return $repoName.${useCaseClassGenerator.firstToLower(met)}(");
+      currMethod.right.forEach((element) {
+        final typeToDisplay = element.displayName;
+        useCaseClassGenerator.writeln("params.$typeToDisplay,");
+      });
+      useCaseClassGenerator.writeln(");");
+      useCaseClassGenerator.writeln("}");
       useCaseClassGenerator.writeln("}");
       useCaseClassGenerator.newLine;
+
+      final paramsClassName = '${className}Params';
+      useCaseClassGenerator
+          .writeln("class $paramsClassName extends Equatable {");
+      currMethod.right.forEach((element) {
+        final typeToDisplay = element.getDisplayString(withNullability: false);
+        useCaseClassGenerator.writeln("final $typeToDisplay;");
+      });
+      useCaseClassGenerator.newLine;
+
+      // Params class
+      useCaseClassGenerator.writeln("const $paramsClassName ({");
+      currMethod.right.forEach((element) {
+        final typeToDisplay = element.displayName;
+        useCaseClassGenerator.writeln("@required $typeToDisplay,");
+      });
+      useCaseClassGenerator.writeln("});");
+      useCaseClassGenerator.newLine;
+      useCaseClassGenerator.writeln("@override");
+      useCaseClassGenerator.writeln("List<Object> get props => [");
+      currMethod.right.forEach((element) {
+        final typeToDisplay = element.displayName;
+        useCaseClassGenerator.writeln("$typeToDisplay,");
+      });
+      useCaseClassGenerator.writeln("];");
+      useCaseClassGenerator.writeln("}");
     }
     return useCaseClassGenerator.generate;
   }
@@ -46,46 +87,64 @@ class RepoCaseGenerator extends GeneratorForAnnotation<RepoCase> {
 
 class ModelVisitor extends SimpleElementVisitor {
   DartType className;
-  Map<String, DartType> methods = Map();
+  String classNameString;
+  Map<String, Tuple<DartType, List<ParameterElement>>> methods = Map();
 
   @override
   visitConstructorElement(ConstructorElement element) {
-    print('Const ${element.name}');
-    print('Const ${element.displayName}');
-    print('Const ${element.runtimeType}');
-    print('Const ${element.type.element.displayName}');
-    print('Const ${element.type.returnType}');
-    print('Const ${element.type.runtimeType}');
-    className = element.type.returnType;
+    if (element != null) {
+      print('Const ${element.name}');
+      print('Const ${element.displayName}');
+      print('Const ${element.runtimeType}');
+      print('Const ${element.type}');
+      // print('Const ${element.type.element.displayName}');
+      // print('Const ${element.type.returnType}');
+      // print('Const ${element.type.runtimeType}');
+      className = element.type.returnType;
+      classNameString =
+          element.type.returnType.getDisplayString(withNullability: false);
+      print('Res: $className');
+      print('Res: $classNameString');
+    }
     return super.visitConstructorElement(element);
   }
 
   @override
   visitFunctionElement(FunctionElement element) {
-    print('Func ${element.name}');
-    print('Func ${element.displayName}');
-    print('Func ${element.runtimeType}');
+    if (element != null) {
+      print('Func ${element.name}');
+      print('Func ${element.displayName}');
+      print('Func ${element.runtimeType}');
+    }
     return super.visitFunctionElement(element);
   }
 
   @override
   visitClassElement(ClassElement element) {
-    print('Class ${element.name}');
-    print('Class ${element.displayName}');
-    print('Class ${element.isAbstract}');
+    if (element != null) {
+      print('Class ${element.name}');
+      print('Class ${element.displayName}');
+      print('Class ${element.isAbstract}');
+    }
     return super.visitClassElement(element);
   }
 
   @override
   visitMethodElement(MethodElement element) {
-    print('Method ${element.displayName}');
-    methods[element.displayName] = element.type.returnType;
+    if (element != null) {
+      print('Method ${element.displayName}');
+      print('Method ${element.parameters}');
+      methods[element.displayName] =
+          Tuple(element.type.returnType, element.type.parameters);
+    }
     return super.visitMethodElement(element);
   }
 
   @override
   visitFieldElement(FieldElement element) {
-    print('Field ${element.displayName}');
+    if (element != null) {
+      print('Field ${element.displayName}');
+    }
     return super.visitFieldElement(element);
   }
 }

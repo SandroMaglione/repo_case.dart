@@ -15,3 +15,10 @@ class UseCaseClassGenerator {
   String firstToLower(String source) =>
       '${source.substring(0, 1).toLowerCase()}${source.substring(1)}';
 }
+
+class Tuple<T1, T2> {
+  final T1 left;
+  final T2 right;
+
+  const Tuple(this.left, this.right);
+}
