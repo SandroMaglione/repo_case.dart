@@ -23,6 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  equatable: ^1.2.5
     
   repo_case:
     path: ../repo_case/

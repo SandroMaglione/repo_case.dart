@@ -3,15 +3,15 @@
   "packages": [
     {
       "name": "_fe_analyzer_shared",
-      "rootUri": "file:///C:/Users/Sandro%20Maglione/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/_fe_analyzer_shared-6.0.0",
+      "rootUri": "file:///C:/Users/Sandro%20Maglione/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/_fe_analyzer_shared-12.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.2"
     },
     {
       "name": "analyzer",
-      "rootUri": "file:///C:/Users/Sandro%20Maglione/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/analyzer-0.39.14",
+      "rootUri": "file:///C:/Users/Sandro%20Maglione/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/analyzer-0.40.6",
       "packageUri": "lib/",
-      "languageVersion": "2.6"
+      "languageVersion": "2.7"
     },
     {
       "name": "args",
@@ -33,9 +33,9 @@
     },
     {
       "name": "build",
-      "rootUri": "file:///C:/Users/Sandro%20Maglione/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/build-1.3.0",
+      "rootUri": "file:///C:/Users/Sandro%20Maglione/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/build-1.5.0",
       "packageUri": "lib/",
-      "languageVersion": "2.7"
+      "languageVersion": "2.9"
     },
     {
       "name": "build_config",
@@ -51,21 +51,21 @@
     },
     {
       "name": "build_resolvers",
-      "rootUri": "file:///C:/Users/Sandro%20Maglione/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/build_resolvers-1.3.10",
+      "rootUri": "file:///C:/Users/Sandro%20Maglione/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/build_resolvers-1.4.3",
       "packageUri": "lib/",
-      "languageVersion": "2.7"
+      "languageVersion": "2.9"
     },
     {
       "name": "build_runner",
-      "rootUri": "file:///C:/Users/Sandro%20Maglione/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/build_runner-1.10.0",
+      "rootUri": "file:///C:/Users/Sandro%20Maglione/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/build_runner-1.10.4",
       "packageUri": "lib/",
-      "languageVersion": "2.6"
+      "languageVersion": "2.10"
     },
     {
       "name": "build_runner_core",
-      "rootUri": "file:///C:/Users/Sandro%20Maglione/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/build_runner_core-5.2.0",
+      "rootUri": "file:///C:/Users/Sandro%20Maglione/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/build_runner_core-6.0.3",
       "packageUri": "lib/",
-      "languageVersion": "2.7"
+      "languageVersion": "2.9"
     },
     {
       "name": "build_test",
@@ -141,9 +141,9 @@
     },
     {
       "name": "dart_style",
-      "rootUri": "file:///C:/Users/Sandro%20Maglione/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/dart_style-1.3.6",
+      "rootUri": "file:///C:/Users/Sandro%20Maglione/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/dart_style-1.3.9",
       "packageUri": "lib/",
-      "languageVersion": "2.7"
+      "languageVersion": "2.9"
     },
     {
       "name": "fixnum",
@@ -219,7 +219,7 @@
     },
     {
       "name": "meta",
-      "rootUri": "file:///C:/Users/Sandro%20Maglione/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/meta-1.2.2",
+      "rootUri": "file:///C:/Users/Sandro%20Maglione/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/meta-1.2.3",
       "packageUri": "lib/",
       "languageVersion": "1.12"
     },
@@ -321,9 +321,9 @@
     },
     {
       "name": "source_gen",
-      "rootUri": "file:///C:/Users/Sandro%20Maglione/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/source_gen-0.9.6",
+      "rootUri": "file:///C:/Users/Sandro%20Maglione/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/source_gen-0.9.8",
       "packageUri": "lib/",
-      "languageVersion": "2.7"
+      "languageVersion": "2.10"
     },
     {
       "name": "source_map_stack_trace",
@@ -375,19 +375,19 @@
     },
     {
       "name": "test",
-      "rootUri": "file:///C:/Users/Sandro%20Maglione/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/test-1.15.3",
+      "rootUri": "file:///C:/Users/Sandro%20Maglione/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/test-1.15.5",
       "packageUri": "lib/",
       "languageVersion": "2.7"
     },
     {
       "name": "test_api",
-      "rootUri": "file:///C:/Users/Sandro%20Maglione/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/test_api-0.2.18",
+      "rootUri": "file:///C:/Users/Sandro%20Maglione/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/test_api-0.2.18+1",
       "packageUri": "lib/",
       "languageVersion": "2.7"
     },
     {
       "name": "test_core",
-      "rootUri": "file:///C:/Users/Sandro%20Maglione/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/test_core-0.3.11",
+      "rootUri": "file:///C:/Users/Sandro%20Maglione/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/test_core-0.3.11+2",
       "packageUri": "lib/",
       "languageVersion": "2.7"
     },
@@ -440,7 +440,7 @@
       "languageVersion": "2.6"
     }
   ],
-  "generated": "2020-08-06T18:10:51.384096Z",
+  "generated": "2020-11-14T06:18:17.318982Z",
   "generator": "pub",
-  "generatorVersion": "2.9.0"
+  "generatorVersion": "2.10.0"
 }

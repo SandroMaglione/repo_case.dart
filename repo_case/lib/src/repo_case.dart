@@ -1,7 +1,5 @@
 class RepoCase {
-  const RepoCase({
-    this.isFuture = false,
-  });
-
-  final bool isFuture;
+  const RepoCase();
 }
+
+const repoCase = RepoCase();

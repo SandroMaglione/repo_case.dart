@@ -1,18 +1,18 @@
-targets:
-  $default:
-    builders:
-      repo_case_generator|repo_case:
-        enabled: true
-        generate_for:
-          exclude:
-            - test
+# targets:
+#   $default:
+#     builders:
+#       repo_case_generator|repo_case:
+#         enabled: true
+#         generate_for:
+#           exclude:
+#             - test
 
 builders:
   repo_case:
-    target: ":repo_case_generator"
+    # target: ":repo_case_generator"
     import: "package:repo_case_generator/builder.dart"
     builder_factories: ["repoCaseGenerator"]
-    build_extensions: {".dart": [".g.part"]}
+    build_extensions: {".dart": [".rc.dart"]}
     auto_apply: dependents
     build_to: source
-    applies_builders: ["source_gen|combining_builder"]
+    # applies_builders: ["source_gen|combining_builder"]
