@@ -25,6 +25,8 @@ dependencies:
     sdk: flutter
 
   equatable: ^1.2.5
+  injectable: ^1.0.5
+  get_it: ^5.0.1
     
   repo_case:
     path: ../repo_case/
@@ -34,6 +36,7 @@ dev_dependencies:
     sdk: flutter
     
   build_runner: ^1.10.4
+  injectable_generator: ^1.0.6
   repo_case_generator:
     path: ../repo_case_generator/
 

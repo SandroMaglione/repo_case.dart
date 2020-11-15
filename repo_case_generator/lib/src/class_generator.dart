@@ -1,12 +1,20 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:repo_case_generator/src/utils.dart';
 
+/// Generate usecase classes from repository class methods
 class ClassGenerator {
   final StringBuffer _stringBuffer = StringBuffer();
+
+  /// Methods of the repository class
   final List<MethodElement> methods;
+
+  /// Libraries to generate import dependencies
   final List<LibraryElement> libraries;
+
+  /// Name of the reposiory class
   final String repoClassName;
 
+  /// Pass generation parameters
   ClassGenerator(this.methods, this.libraries, this.repoClassName);
 
   void _write(Object obj) => _stringBuffer.write(obj);
@@ -15,30 +23,39 @@ class ClassGenerator {
 
   void _newLine() => _stringBuffer.writeln();
 
+  /// Generate output [String] with usecase classes from methods
   String generate() {
-    // Ignores and imports
-    _writeln("// ignore_for_file: public_member_api_docs");
-    // _writeln("// ignore_for_file: unused_import");
-    _writeln("import 'package:meta/meta.dart';");
-
+    // Generate import for each library/dependency in repository file
     libraries.forEach((library) {
       final libraryName = library.source.uri;
+
+      // Do not generate dart core and repo case imports
       if (!_isCoreDartTypeOrRepoCase(libraryName)) {
         _writeln("import '$libraryName';");
       }
     });
 
+    // Generate usecase class for each method in the repository
     methods.forEach((method) {
       _generateUsecaseClassFromMethod(method);
     });
 
+    // Return generated code
     return _stringBuffer.toString();
   }
 
+  /// Generate main usecase class
   void _generateUsecaseClassFromMethod(MethodElement methodElement) {
+    // Name of the method
     final methodName = methodElement.name;
+
+    // Pascal case and suffix -Repo
     final methodClassName = _methodRepoClassName(methodName);
+
+    // Append suffix -Params to the name of the class method
     final repoParamsClassName = _repoParamsClassName(methodClassName);
+
+    // Method configuration variables
     final methodParameters = methodElement.parameters;
     final hasMethodParameters = methodParameters.isNotEmpty;
     final methodReturnType =
@@ -92,6 +109,7 @@ class ClassGenerator {
     }
   }
 
+  /// Generate params class used as usecase class parameters
   void _generateParamsClass(
       String repoParamsClassName, List<ParameterElement> parameters) {
     // 1. Class definition
@@ -129,7 +147,7 @@ class ClassGenerator {
   String _methodRepoClassName(String methodName) =>
       '${toPascalCase(methodName)}Repo';
 
-  /// Parameters class for the usecase, given method name **already pascal
+  /// Parameters class for the usecase, given method name **already pascal case**
   String _repoParamsClassName(String methodName) => '${methodName}Params';
 
   /// Check if library import is `dart:core` of `repo_case/repo_case.dart`
