@@ -11,7 +11,7 @@
   </a>
 </p>
 
-Automatically generate usecase classes from your repository class definition in Dart and Flutter
+**Automatically generate usecase classes from your repository class definition in Dart and Flutter**.
 
 Made by **Sandro Maglione**, check out his personal official website [sandromaglione.com](https://www.sandromaglione.com)
 
@@ -74,7 +74,7 @@ Specifically, **the goal of the package is to autogenerate usecase classes**. Th
 
 The usecase class aims to abstract the domain layer from the presentation layer. For each method of the repository class we should write a new usecase class, which is then called from the presentation layer to access the repository.
 
-![Repository-Usecases-Presentation diagram](../repo_case.dart/docs/images/repo_usecase_presentation.png)
+![Repository-Usecases-Presentation diagram](https://raw.githubusercontent.com/SandroMaglione/repo_case.dart/master/docs/images/repo_usecase_presentation.png)
 
 The template of each usecase class as presented in the course is basically always the same. The only differences are the name of the method, the parameters, and its return type. Perfect usecase for code generation!
 
@@ -97,7 +97,7 @@ dev_dependencies:
 ### [Entity](https://youtu.be/lPkWX8xFthE?t=350)
 The entity class contains all the data exposed to the `presentation layer`, which comes from the `data layer` (database, local storage, etc.) and is accessed through the `domain layer`. The presentation layer will call the usecase class to access the entity to be displayed in the app.
 
-We create a new `domain` folder and an `entities` folder inside it. We then create a entity class in a new `entity.dart` file inside the entities folder:
+We create a new `domain` folder and an `entities` folder inside it. We then create a entity class in a new [`entity.dart`](https://github.com/SandroMaglione/repo_case.dart/blob/master/example/lib/domain/entities/entity.dart) file inside the entities folder:
 ```dart
 /// lib/domain/entities/entity.dart
 class Entity {
@@ -109,7 +109,7 @@ class Entity {
 ### [Model](https://youtu.be/keaTZ9M_U1A?t=1309)
 The models are used to fetch and convert external raw data (json, xml, etc.) to dart objects. These classes extends the entities in order to be passed from the data layer to the presentation layer.
 
-We create a new `data` folder and a `models` folder inside it. We then create a model class in a new `model.dart` file inside the models folder:
+We create a new `data` folder and a `models` folder inside it. We then create a model class in a new [`model.dart`](https://github.com/SandroMaglione/repo_case.dart/blob/master/example/lib/data/models/model.dart) file inside the models folder:
 ```dart
 /// lib/data/models/model.dart
 class Model extends Entity {
@@ -119,7 +119,7 @@ class Model extends Entity {
 ### [Repository](https://youtu.be/m_lkZo6CYcs?t=63)
 The repository contains the methods that will be called from the presentation layer to access the data from external sources. It defines all the usecases that can be accessed by the presentation layer. **The repository will fetch the `models` from the data layer and return `entities` to the presentation layer.**
 
-We create a `repository` folder inside the domain folder. We then create a repository class in a new dart file. The file must contain an `abstract` class annotated with the **`@repoCase`** annotation:
+We create a `repository` folder inside the domain folder. We then create a repository class in a new dart file. The file must contain an [`abstract class`](https://github.com/SandroMaglione/repo_case.dart/blob/master/example/lib/domain/repository/user_repository.dart) annotated with the **`@repoCase`** annotation:
 ```dart
 /// lib/domain/repository/user_repository.dart
 @repoCase
@@ -131,7 +131,7 @@ We can now run the build command to autogenerate the usecase classes:
 ```shell
 flutter pub run build_runner build
 ```
-This command will generate a new `user_repository.rc.dart` file in the same folder of the repository class (`rc` stays for 'repo_case'):
+This command will generate a new [`user_repository.rc.dart`](https://github.com/SandroMaglione/repo_case.dart/blob/master/example/lib/domain/repository/user_repository.rc.dart) file in the same folder of the repository class (`rc` stays for 'repo_case'):
 ```dart
 /// lib/domain/repository/user_repository.rc.dart
 class GetDataRepo {
@@ -159,7 +159,7 @@ class GetDataRepoParams {
 ### [Repository concrete implementation](https://youtu.be/m_lkZo6CYcs?t=123)
 We must also define the concrete implementation of the repository class that will fetch the model from the data layer and return the respective entity.
 
-We create a new `repository` folder inside the data folder. We then create a new file containing the concrete implementation of our repository:
+We create a new `repository` folder inside the data folder. We then create a new file containing the [concrete implementation](https://github.com/SandroMaglione/repo_case.dart/blob/master/example/lib/data/repository/user_repository_impl.dart) of our repository:
 ```dart
 class UserRepositoryImpl implements UserRepository {
   @override
@@ -172,7 +172,7 @@ class UserRepositoryImpl implements UserRepository {
 ### Access the entity from the presentation layer
 We can now call the usecase class from the presentation layer to access the entities.
 
-For example, we could have a `bloc` class that defines a method to fetch an entity to display in the app. Here below an example of how we would implement it:
+For example, we could have a [`bloc`](https://github.com/SandroMaglione/repo_case.dart/blob/master/example/lib/presentation/user_bloc.dart) class that defines a method to fetch an entity to display in the app. Here below an example of how we would implement it:
 ```dart
 class UserBloc {
   /// Usecase class generated by the repo_case package
@@ -194,7 +194,7 @@ class UserBloc {
 ## Injectable
 The package is designed to work with the [`injectable`](https://pub.dev/packages/injectable) package.
 
-All the usecase classes have the `-Repo` suffix. You can therefore add the following rule to your `build.yaml` file to automatically add the usecase classes to the list of classes generated by the injectable package. Check out the [example](./example/build.yaml) for more details:
+All the usecase classes have the `-Repo` suffix. You can therefore add the following rule to your `build.yaml` file to automatically add the usecase classes to the list of classes generated by the injectable package. Check out the [example](https://github.com/SandroMaglione/repo_case.dart/tree/master/example) for more details:
 ```yaml
 targets:
   $default:
@@ -216,4 +216,4 @@ If you would like to have a new feature implemented, just write a new issue.
 - v0.1.0 - 15 November 2020
 
 ## License
-MIT License, see the [LICENSE.md](../repo_case.dart/LICENSE) file for details.
+MIT License, see the [LICENSE.md](https://github.com/SandroMaglione/repo_case.dart/blob/master/LICENSE) file for details.
