@@ -10,4 +10,3 @@ environment:
 
 dependencies:
   test: ^1.11.1
-  analyzer: ^0.40.6

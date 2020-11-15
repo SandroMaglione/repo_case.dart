@@ -13,6 +13,8 @@
 
 **Automatically generate usecase classes from your repository class definition in Dart and Flutter**.
 
+Requires [`repo_case`](https://pub.dev/packages/repo_case) package to annotate class.
+
 Made by **Sandro Maglione**, check out his personal official website [sandromaglione.com](https://www.sandromaglione.com)
 
 ## Versioning

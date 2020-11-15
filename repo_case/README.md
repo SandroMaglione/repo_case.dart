@@ -16,7 +16,7 @@
 Made by **Sandro Maglione**, check out his personal official website [sandromaglione.com](https://www.sandromaglione.com)
 
 ## Overview
-1. Import the package
+1. Import the package (as well as the [`repo_case_generator`](https://pub.dev/packages/repo_case_generator) and [`build_runner`](https://pub.dev/packages/build_runner))
 2. Create a repository class
 3. Annotate the class with `@repoCase`
 4. Run the build

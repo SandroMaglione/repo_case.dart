@@ -333,9 +333,9 @@ packages:
   repo_case:
     dependency: "direct main"
     description:
-      path: "../repo_case"
-      relative: true
-    source: path
+      name: repo_case
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "0.1.0"
   shelf:
     dependency: transitive
