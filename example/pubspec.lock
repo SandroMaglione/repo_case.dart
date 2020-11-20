@@ -381,14 +381,14 @@ packages:
       path: "../repo_case"
       relative: true
     source: path
-    version: "0.1.0"
+    version: "0.1.1"
   repo_case_generator:
     dependency: "direct dev"
     description:
       path: "../repo_case_generator"
       relative: true
     source: path
-    version: "0.1.0"
+    version: "0.1.1"
   shelf:
     dependency: transitive
     description:

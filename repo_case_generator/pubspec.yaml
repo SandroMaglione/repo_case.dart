@@ -1,9 +1,9 @@
 name: repo_case_generator
-description: Generator package for repo_case.
+description: Generator package for repo_case to auto-generate use cases classes from your repository signature class
 author: Sandro Maglione <lass.maglio@gmail.com>
 homepage: https://github.com/SandroMaglione/repo_case.dart 
 
-version: 0.1.0
+version: 0.1.2
 
 environment:  
   sdk: ">=2.6.0 <3.0.0" 
@@ -15,7 +15,9 @@ dependencies:
   # code_builder: ^3.4.0
   analyzer: ^0.40.6
   
-  repo_case: ^0.1.0 
+  # repo_case: 
+    # path: ../repo_case/ 
+  repo_case: ^0.1.2
 
 dev_dependencies:  
   build_test: ^1.2.0

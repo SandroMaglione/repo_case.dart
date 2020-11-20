@@ -25,6 +25,10 @@
 ///
 /// Check out [the offical documentation](https://github.com/SandroMaglione/repo_case.dart)
 /// for more details and examples.
+///
+/// Created by **Sandro Maglione**
+///  - https://twitter.com/SandroMaglione
+///  - https://www.sandromaglione.com/
 class RepoCase {
   const RepoCase();
 }
@@ -56,4 +60,8 @@ class RepoCase {
 ///
 /// Check out [the offical documentation](https://github.com/SandroMaglione/repo_case.dart)
 /// for more details and examples.
+///
+/// Created by **Sandro Maglione**
+///  - https://twitter.com/SandroMaglione
+///  - https://www.sandromaglione.com/
 const repoCase = RepoCase();

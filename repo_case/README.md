@@ -1,6 +1,6 @@
 # Repo Case
 <p>
-  <img src="https://img.shields.io/badge/version-0.1.0-blue.svg" />
+  <img src="https://img.shields.io/badge/version-0.1.2-blue.svg" />
   <img src="https://img.shields.io/badge/flutter-v1.22.0-blue.svg" />
   <img src="https://img.shields.io/badge/dart-v2.10.0-blue.svg" />
   <a href="https://github.com/SandroMaglione">
@@ -12,6 +12,8 @@
 </p>
 
 **Automatically generate usecase classes from your repository class definition in Dart and Flutter**.
+
+### **[Check out the official guide on repo_case and Clean Architecture](https://www.sandromaglione.com/2020/11/20/auto-generate-usecase-classes-from-your-repository-clean-architecture-flutter/)**
 
 Made by **Sandro Maglione**, check out his personal official website [sandromaglione.com](https://www.sandromaglione.com)
 
@@ -84,14 +86,14 @@ Import the `repo_case` package as a normal dependencies and the `repo_case_gener
 dependencies:
   flutter:
     sdk: flutter
-  repo_case: ^0.1.0
+  repo_case: ^0.1.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
     
   build_runner: any
-  repo_case_generator: ^0.1.0
+  repo_case_generator: ^0.1.2
 ```
 ## Clean Architecture
 ### [Entity](https://youtu.be/lPkWX8xFthE?t=350)
@@ -213,6 +215,8 @@ Feel free to open a [**Pull Request**](https://github.com/SandroMaglione/repo_ca
 If you would like to have a new feature implemented, just write a new issue.
 
 ## Versioning
+- v0.1.2 - 20 November 2020
+- v0.1.1 - 20 November 2020
 - v0.1.0 - 15 November 2020
 
 ## License
