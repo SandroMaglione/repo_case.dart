@@ -3,10 +3,10 @@ description: repo_case allows you to auto-generate use cases classes from your r
 author: Sandro Maglione <lass.maglio@gmail.com>
 homepage: https://github.com/SandroMaglione/repo_case.dart
 
-version: 0.1.2
+version: 0.2.0-nullsafety.0
 
 environment:
-  sdk: ">=2.6.0 <3.0.0"
+  sdk: ">=2.12.0-0 <3.0.0"
 
 dependencies:
-  test: ^1.11.1
+  test: ^1.16.0-nullsafety.13
