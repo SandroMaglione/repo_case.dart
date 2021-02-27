@@ -1,3 +1,4 @@
+// @dart=2.9
 library repo_case_generator;
 
 import 'dart:async';
@@ -31,11 +32,11 @@ class RepoCaseGenerator extends GeneratorForAnnotation<RepoCase> {
     // Throw if annotation is used for an abstract class
     if ((element as ClassElement).methods.isEmpty) {
       print(
-          'repo_case: ${(element as ClassElement).name} has not methods, no usecase classes generated!');
+          'repo_case: ${(element).name} has not methods, no usecase classes generated!');
       return '';
     } else {
       // Get methods and name of repository class
-      final repoClassName = toPascalCase((element as ClassElement).name);
+      final repoClassName = toPascalCase((element).name);
       final methods = (element as ClassElement).methods;
 
       // Get list of libraries to import

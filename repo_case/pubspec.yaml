@@ -6,7 +6,7 @@ homepage: https://github.com/SandroMaglione/repo_case.dart
 version: 0.2.0-nullsafety.0
 
 environment:
-  sdk: ">=2.12.0-0 <3.0.0"
+  sdk: ">=2.12.0-259.16.beta <3.0.0"
 
 dependencies:
   test: ^1.16.0-nullsafety.13

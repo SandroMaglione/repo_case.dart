@@ -1,3 +1,6 @@
+## [0.2.0-nullsafety.0] - 27 February 2021
+First nullsafe release
+
 ## [0.1.2] - 20 November 2020
 - Updated documentation repo_case version
 

@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:repo_case/repo_case.dart';
 import 'package:source_gen_test/annotations.dart';
 
