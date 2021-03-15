@@ -18,25 +18,25 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.10.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  equatable: ^1.2.5
-  injectable: ^1.0.5
-  get_it: ^5.0.1
-    
-  repo_case:
-    path: ../repo_case/
+  equatable: ^2.0.0
+  injectable: ^1.2.0
+  
+  # repo_case: 
+    # path: ../repo_case/ 
+  repo_case: ^0.2.0-nullsafety.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
     
-  build_runner: ^1.10.4
-  injectable_generator: ^1.0.6
+  build_runner: ^1.11.1
+  injectable_generator: ^1.2.0
   repo_case_generator:
     path: ../repo_case_generator/
 

@@ -1,3 +1,6 @@
+## [0.2.0-nullsafety.1] - 15 March 2021
+- Fix code generation with `required` instead of `@required`
+
 ## [0.2.0-nullsafety.0] - 27 February 2021
 First nullsafe release
 

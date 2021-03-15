@@ -14,7 +14,7 @@ class GetDataRepo {
   final UserRepository userRepository;
 
   const GetDataRepo({
-    @required this.userRepository,
+    required this.userRepository,
   });
 
   Entity call(GetDataRepoParams params) {
@@ -28,6 +28,6 @@ class GetDataRepoParams {
   final String param;
 
   const GetDataRepoParams({
-    @required this.param,
+    required this.param,
   });
 }

@@ -74,7 +74,7 @@ class ClassGenerator {
     _writeln('const $methodClassName({');
 
     // 4. Required repo class parameter
-    _writeln('@required this.$_repoClassNameParameter,');
+    _writeln('required this.$_repoClassNameParameter,');
 
     // 5. Close constructor
     _writeln('});');
@@ -131,7 +131,7 @@ class ClassGenerator {
     // 4. Required parameters
     parameters.forEach((parameter) {
       final parameterName = parameter.name;
-      _writeln('@required this.$parameterName,');
+      _writeln('required this.$parameterName,');
     });
 
     // 5. Close constructor
