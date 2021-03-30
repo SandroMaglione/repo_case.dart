@@ -1,4 +1,3 @@
-// @dart=2.9
 library repo_case_generator;
 
 import 'dart:async';

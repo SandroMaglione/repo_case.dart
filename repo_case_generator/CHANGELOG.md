@@ -1,3 +1,8 @@
+## [0.2.0-nullsafety.2] - 30 March 2021
+- Added support for nullable types
+- Added support for generic types
+- Added documentation comment to each class generated
+
 ## [0.2.0-nullsafety.1] - 15 March 2021
 - Fix code generation with `required` instead of `@required`
 

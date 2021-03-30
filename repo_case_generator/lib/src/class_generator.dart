@@ -1,4 +1,3 @@
-// @dart=2.9
 import 'package:analyzer/dart/element/element.dart';
 import 'package:repo_case_generator/src/utils.dart';
 
@@ -20,7 +19,7 @@ class ClassGenerator {
 
   void _write(Object obj) => _stringBuffer.write(obj);
 
-  void _writeln([Object obj]) => _stringBuffer.writeln(obj);
+  void _writeln([Object? obj]) => _stringBuffer.writeln(obj);
 
   void _newLine() => _stringBuffer.writeln();
 
@@ -58,10 +57,18 @@ class ClassGenerator {
 
     // Method configuration variables
     final methodParameters = methodElement.parameters;
+    final genericType = _repoMethodGenericType(methodElement);
+    final paramsGenericType =
+        _repoParamsGenericType(methodElement, methodParameters);
     final hasMethodParameters = methodParameters.isNotEmpty;
     final methodReturnType =
-        methodElement.returnType.getDisplayString(withNullability: false);
+        methodElement.returnType.getDisplayString(withNullability: true);
     final isMethodAsync = methodElement.returnType.isDartAsyncFuture;
+    final paramsDefinitions = _repoParamsDefinition(methodParameters);
+    final documentationComment = _documentationComment(paramsDefinitions);
+
+    // 0. Documentation comment
+    documentationComment.forEach((c) => _writeln(c));
 
     // 1. Class definition
     _writeln('class $methodClassName {');
@@ -82,9 +89,9 @@ class ClassGenerator {
 
     // 6. Defintion of 'call' function
     _write(methodReturnType);
-    _write(' call(');
+    _write(' call${genericType}(');
     if (hasMethodParameters) {
-      _write('$repoParamsClassName params');
+      _write('${repoParamsClassName}${paramsGenericType} params');
     }
     _write(') ');
     _writeln(isMethodAsync ? 'async {' : '{');
@@ -106,23 +113,27 @@ class ClassGenerator {
 
     // 9. Generate params class
     if (hasMethodParameters) {
-      _generateParamsClass(repoParamsClassName, methodParameters);
+      _generateParamsClass(
+        repoParamsClassName,
+        paramsDefinitions,
+        methodParameters,
+        paramsGenericType,
+      );
     }
   }
 
   /// Generate params class used as usecase class parameters
   void _generateParamsClass(
-      String repoParamsClassName, List<ParameterElement> parameters) {
+    String repoParamsClassName,
+    List<String> paramsDefinitions,
+    List<ParameterElement> parameters,
+    String genericType,
+  ) {
     // 1. Class definition
-    _writeln('class $repoParamsClassName {');
+    _writeln('class ${repoParamsClassName}${genericType} {');
 
     // 2. Class parameters from method definition
-    parameters.forEach((parameter) {
-      final parameterName = parameter.name;
-      final parameterReturnType =
-          parameter.type.getDisplayString(withNullability: false);
-      _writeln('final $parameterReturnType $parameterName;');
-    });
+    paramsDefinitions.forEach((param) => _writeln(param));
     _newLine();
 
     // 3. Class constructor
@@ -150,6 +161,62 @@ class ClassGenerator {
 
   /// Parameters class for the usecase, given method name **already pascal case**
   String _repoParamsClassName(String methodName) => '${methodName}Params';
+
+  /// Build list with all parameters definitions for params class
+  List<String> _repoParamsDefinition(List<ParameterElement> parameters) {
+    List<String> definitions = [];
+    parameters.forEach((parameter) {
+      final parameterName = parameter.name;
+      final parameterReturnType =
+          parameter.type.getDisplayString(withNullability: true);
+      definitions.add('final $parameterReturnType $parameterName;');
+    });
+    return definitions;
+  }
+
+  /// Add all generic type to params method definition
+  String _repoMethodGenericType(MethodElement methodElement) =>
+      methodElement.typeParameters.isEmpty
+          ? ''
+          : '<${methodElement.typeParameters.join(', ')}>';
+
+  /// Add only the generic types necessary to params class definition
+  String _repoParamsGenericType(
+    MethodElement methodElement,
+    List<ParameterElement> methodParameters,
+  ) {
+    // Check which generic types are actually used by for the parameters
+    // Some parameters may be only used as return types, so they are not needed in the params class
+    final genericParamsType = methodElement.typeParameters
+        .map(
+          (typeParam) => typeParam.name,
+        )
+        .where(
+          (genericName) => methodParameters
+              .map(
+                (paramElement) => paramElement.type.getDisplayString(
+                  withNullability: false,
+                ),
+              )
+              .contains(genericName),
+        );
+    return genericParamsType.isEmpty ? '' : '<${genericParamsType.join(', ')}>';
+  }
+
+  /// Documentation comment with name of repository and parameters in input
+  List<String> _documentationComment(List<String> paramsDefinitions) {
+    List<String> comment = [];
+    comment.add('/// `$repoClassName`');
+    if (paramsDefinitions.isNotEmpty) {
+      comment.add('///');
+      comment.add('/// ```dart');
+      paramsDefinitions.forEach(
+        (param) => comment.add('/// ${param.replaceAll('final ', '')}'),
+      );
+      comment.add('/// ```');
+    }
+    return comment;
+  }
 
   /// Check if library import is `dart:core` of `repo_case/repo_case.dart`
   bool _isCoreDartTypeOrRepoCase(Uri uri) =>

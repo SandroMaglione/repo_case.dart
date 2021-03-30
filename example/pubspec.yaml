@@ -23,9 +23,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   equatable: ^2.0.0
   injectable: ^1.2.0
+  intl: ^0.17.0
   
   # repo_case: 
     # path: ../repo_case/ 
@@ -45,6 +48,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
+  generate: true
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

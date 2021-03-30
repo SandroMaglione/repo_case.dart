@@ -18,7 +18,21 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
     {String? environment, _i2.EnvironmentFilter? environmentFilter}) {
   final gh = _i2.GetItHelper(get, environment, environmentFilter);
   gh.factory<_i3.UserRepository>(() => _i4.UserRepositoryImpl());
+  gh.factory<_i5.GetDataNullableRepo>(
+      () => _i5.GetDataNullableRepo(userRepository: get<_i3.UserRepository>()));
   gh.factory<_i5.GetDataRepo>(
       () => _i5.GetDataRepo(userRepository: get<_i3.UserRepository>()));
+  gh.factory<_i5.GetFullGenericRepo>(
+      () => _i5.GetFullGenericRepo(userRepository: get<_i3.UserRepository>()));
+  gh.factory<_i5.GetLocalRepo>(
+      () => _i5.GetLocalRepo(userRepository: get<_i3.UserRepository>()));
+  gh.factory<_i5.GetNullableRepo>(
+      () => _i5.GetNullableRepo(userRepository: get<_i3.UserRepository>()));
+  gh.factory<_i5.GetParamGenericRepo>(
+      () => _i5.GetParamGenericRepo(userRepository: get<_i3.UserRepository>()));
+  gh.factory<_i5.GetParamNullableRepo>(() =>
+      _i5.GetParamNullableRepo(userRepository: get<_i3.UserRepository>()));
+  gh.factory<_i5.GetReturnGenericRepo>(() =>
+      _i5.GetReturnGenericRepo(userRepository: get<_i3.UserRepository>()));
   return get;
 }

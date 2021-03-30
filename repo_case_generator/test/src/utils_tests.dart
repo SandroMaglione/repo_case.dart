@@ -1,4 +1,3 @@
-// @dart=2.9
 import 'package:repo_case_generator/src/utils.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:test/test.dart';

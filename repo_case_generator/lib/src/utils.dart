@@ -1,4 +1,3 @@
-// @dart=2.9
 import 'package:analyzer/dart/element/element.dart';
 import 'package:source_gen/source_gen.dart';
 
@@ -15,17 +14,17 @@ String toPascalCase(String s) {
 }
 
 /// Throw [InvalidGenerationSourceError] if [condition] is true
-void throwIf(bool condition, String message, {Element element, String todo}) {
+void throwIf(bool condition, String message, {Element? element, String? todo}) {
   if (condition) {
     throwError(message, todo: todo, element: element);
   }
 }
 
 /// Throw [InvalidGenerationSourceError]
-void throwError(String message, {Element element, String todo}) {
+void throwError(String message, {Element? element, String? todo}) {
   throw InvalidGenerationSourceError(
     'repo_case: $message',
-    todo: todo,
+    todo: todo ?? '',
     element: element,
   );
 }
